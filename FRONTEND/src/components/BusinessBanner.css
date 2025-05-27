@@ -1,0 +1,111 @@
+.business-banner {
+    background: #fdd300;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 80px 60px;
+    position: relative;
+  }
+  
+  .banner-box {
+    background: rgba(255, 255, 255, 0.47);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+  }
+  
+  .banner-box h2 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 10px;
+  }
+  
+  .banner-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .seller-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .seller-btn:hover {
+    background-color: #0056b3;
+  }
+ 
+  /* watermark */
+  .watermark{
+    color: #0000001e;
+    position: absolute;top: 30%;left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 0;
+  }
+  #elephant-img{
+    position: absolute;
+    top: 90px;
+    left: 190px;
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    z-index: -1;
+  }
+  #jwlry-img{
+    position: absolute;
+    top: 210px;
+    left: 410px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    z-index: -1;
+  }
+  #bag-img{
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+
+  @media (max-width: 768px) {
+    .business-banner {
+      padding: 40px 10px;
+    }
+  
+    .banner-box {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .banner-box h3 {
+      font-size: 20px;
+    }
+  
+    .banner-box p {
+      font-size: 14px;
+    }
+  
+    .banner-box button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  
+  

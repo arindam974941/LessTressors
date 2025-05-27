@@ -1,0 +1,79 @@
+.collections {
+    background: linear-gradient(to bottom, #ec108b, #fdd300);
+    padding: 80px 50px;
+    text-align: center;
+    color: white;
+  }
+  
+  .collections h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: black;
+  }
+  
+  .collection-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .collection-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    width: 200px;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .collection-card:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .collection-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  
+  .collection-card h3 {
+    color: black;
+    font-size: 18px;
+  }
+   /* watermark */
+   .watermark{
+    color: #0000001e;
+    position: absolute;top: 30%;left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 200px;
+    font-weight: 400;
+    white-space: nowrap;
+    z-index: 0;
+  }
+  
+
+  @media (max-width: 768px) {
+    .collection-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .collection-card {
+      width: 80%;
+      max-width: 300px;
+    }
+  
+    .collections h2 {
+      font-size: 22px;
+    }
+  
+    .collection-card img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

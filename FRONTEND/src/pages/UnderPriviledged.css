@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-purple: #8A2BE2; /* A shade of purple */
+  --light-purple: #E0BBE4;
+  --dark-purple: #6A0DAD;
+  --text-dark: #333;
+  --text-light: #f4f4f4;
+  --button-yellow: #FFD700; /* Gold/Yellow for buttons */
+  --green-section: #2E8B57; /* SeaGreen for the green section */
+  --white: #fff;
+  --black: #000;
+}
+*{
+  margin: 0;padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding:0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white);
+  color: var(--text-dark);
+  overflow-x: hidden; 
+  /* overflow: hidden; */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw; /* Ensure it takes full viewport width */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%; /* Maintain horizontal padding */
+  /* background-color: var(--light-purple); */
+  background-color: rgba(255, 0, 0, 0);
+  color: var(--dark-purple);
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--dark-purple);
+}
+
+.nav-links span {
+  margin-left: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-links span:hover {
+  color: var(--primary-purple);
+}
+
+.login-button {
+  padding: 10px 20px;
+  background-color: var(--button-yellow);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e6c200; /* Slightly darker yellow */
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(to right, var(--light-purple), var(--primary-purple));
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5%; /* Adjust vertical padding later if needed, focus on horizontal */
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%; /* Full width */
+  min-height: 70vh; /* Make it take a significant portion of the viewport height */
+  box-sizing: border-box;
+  position: relative; /* For background image positioning */
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://example.com/path/to/your/hero_background.png'); /* Replace with your actual hero background image */
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  opacity: 0.3; /* Adjust opacity as needed to blend with gradient */
+  z-index: 0; /* Ensure it's behind content */
+}
+
+.hero-content {
+  max-width: 500px;
+  text-align: left;
+  z-index: 1; 
+  padding-top: 50px; 
+  padding-bottom: 50px; 
+  position: relative;
+  left:-23%;
+}
+
+.hero-content h1 {
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  padding: 15px 30px;
+  background-color: rgb(255, 187, 0);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #ffe134;
+}
+
+
+.hero-image {
+  z-index: 1; /* Ensure image is above background */
+  /* The original image looks like a character on a light background.
+     For a full-screen effect, we can place a larger image or use a background.
+     If `hero-image` is an `<img>` tag, ensure it fits well. */
+}
+
+.hero-image img {
+  width: 600px;
+  max-width: 700px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain; /* Ensure the image fits without cropping */
+}
+#sapiens {
+  position: absolute;
+  top: 0;
+  left: 55%;
+  width: 900px;
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 80px 5%;
+  text-align: center;
+  background-color: var(--white);
+  color: var(--text-dark);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mission-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.mission-section p {
+  font-size: 1.1em;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+}
+
+.product-showcase {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background-color: var(--light-purple);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-card .product-name {
+  font-weight: 600;
+  color: var(--dark-purple);
+}
+
+/* Impact Section */
+.impact-section {
+  background-color: var(--primary-purple);
+  color: var(--white);
+  padding: 80px 5%;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.impact-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 50px;
+}
+
+.impact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.impact-card {
+  background-color: var(--light-purple);
+  color: var(--text-dark);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.impact-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.impact-card p {
+  padding: 20px;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+/* Empower Women Section */
+.empower-women-section {
+  background-color: var(--green-section);
+  color: var(--white);
+  /* padding: 80px 5%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.empower-content {
+  max-width: 600px;
+  /* height: 30px; */
+  text-align: left;
+}
+
+.empower-content h2 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+
+.empower-content p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.empower-button {
+  padding: 15px 30px;
+  background-color: var(--button-yellow);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 500px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.empower-button:hover {
+  background-color: #e6c200;
+}
+
+/* .empower-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+} */
+#greenGirl{
+  position: relative;
+  top: 6px;
+  left: 25%;
+  width: 300px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 50px 5%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color: var(--button-yellow);
+}
+
+.footer-column p {
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+/* General watermark styling */
+section::before {
+  content: "LES TRESOR"; /* Replace with your watermark text */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15em; /* Adjust size as needed */
+  color: rgba(0, 0, 0, 0); /* Light gray, semi-transparent */
+  z-index: -1; /* Ensure it stays behind the content */
+  pointer-events: none; /* Prevent interaction with the watermark */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-section, .empower-women-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 5%; /* Adjust padding for smaller screens */
+  }
+
+  .hero-content, .empower-content {
+    text-align: center;
+    padding-top: 0; /* Remove extra padding when stacked */
+    padding-bottom: 0;
+  }
+
+  .nav-links {
+    display: none; /* Hide nav links on smaller screens for simplicity, consider a hamburger menu */
+  }
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo, .login-button {
+    margin-bottom: 15px;
+  }
+
+  .product-showcase, .impact-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card, .impact-card {
+    width: 80%; /* Make cards wider on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5em;
+  }
+
+  .hero-content p {
+    font-size: 1em;
+  }
+
+  .mission-section h2, .impact-section h2, .empower-content h2 {
+    font-size: 2em;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2em;
+  }
+
+  .hero-button, .empower-button, .login-button {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+
+  .product-card, .impact-card {
+    width: 95%;
+  }
+}
