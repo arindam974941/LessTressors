@@ -1,16 +1,22 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => (
   <div className="product-card">
     <img
-      src={product.images?.[0] || '/placeholder.png'}
+      src={product.imageUrl || "/placeholder.png"}
       alt={product.name}
       className="product-image"
     />
-    <h3>{product.name}</h3>
-    <p className="brand">{product.brand}</p>
-    <p className="price">₹{product.price}</p>
-    {/* Add more details or a link to product detail page */}
+    <h3 className="product-name">{product.name}</h3>
+    <p className="product-brand">Brand: {product.brand || "Generic"}</p>
+    <p className="product-price">₹{product.price}</p>
+    <Link
+      to={`/product/${product.id}`}
+      className="product-button"
+    >
+      View Details
+    </Link>
   </div>
 );
 
