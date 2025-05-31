@@ -20,6 +20,7 @@ import "aos/dist/aos.css";
 import Homepage from "./pages/Homepage";
 import UnderPriviledged from "./pages/UnderPriviledged";
 import ProductDetails from "./pages/ProductDetails";
+import ProductForm from "./components/ProductForm";
 
 function App() {
   useEffect(() => {
@@ -33,7 +34,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
 
           <Route path="/products" element={<ProductsPage />} />
-
+          <Route path="/add-product" element={<ProductForm />} />
           <Route path="/underPriviledged" element={<UnderPriviledged />} />
           <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>

@@ -1,49 +1,88 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import './ProductForm.css';
 
-const ProductForm = ({ onClose }) => {
+const ProductForm = () => {
   const [form, setForm] = useState({
     name: '',
     brand: '',
     category: '',
     price: '',
     description: '',
-    images: [],
     inStock: 1,
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    setImagePreview(file ? URL.createObjectURL(file) : null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/products', form, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      const data = new FormData();
+      Object.entries(form).forEach(([key, value]) => data.append(key, value));
+      if (imageFile) data.append('image', imageFile);
+
+      await axios.post('http://localhost:5000/products', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'multipart/form-data',
+        },
       });
       alert('Product added!');
-      onClose();
+      navigate('/products');
     } catch (err) {
       alert('Failed to add product');
     }
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <button className="close-btn" onClick={onClose}>✕</button>
-        <h2>Add Product</h2>
-        <form onSubmit={handleSubmit}>
-          <input name="name" placeholder="Name" onChange={handleChange} required />
-          <input name="brand" placeholder="Brand" onChange={handleChange} />
-          <input name="category" placeholder="Category" onChange={handleChange} required />
-          <input name="price" type="number" placeholder="Price" onChange={handleChange} required />
-          <textarea name="description" placeholder="Description" onChange={handleChange} />
-          <input name="inStock" type="number" placeholder="Stock" onChange={handleChange} />
-          <button type="submit">Add Product</button>
-        </form>
-      </div>
+    <div className="product-form-container">
+      <form className="product-form-card" onSubmit={handleSubmit}>
+        <h2 className="form-title">Add Product</h2>
+        <div className="form-group">
+          <label>Name*</label>
+          <input name="name" onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Brand</label>
+          <input name="brand" onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label>Category*</label>
+          <input name="category" onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Price*</label>
+          <input name="price" type="number" min="0" onChange={handleChange} required />
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <textarea name="description" onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label>Stock</label>
+          <input name="inStock" type="number" min="1" onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label>Product Image*</label>
+          <input type="file" accept="image/*" onChange={handleImageChange} required />
+          {imagePreview && (
+            <img src={imagePreview} alt="Preview" className="image-preview" />
+          )}
+        </div>
+        <button className="submit-btn" type="submit">Add Product</button>
+      </form>
     </div>
   );
 };

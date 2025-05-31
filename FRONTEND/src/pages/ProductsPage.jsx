@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductGrid from '../components/ProductGrid';
+import { fetchProducts } from '../api/products';
 
 const staticProducts = [
   {
@@ -34,10 +35,16 @@ const staticProducts = [
 
 
 const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProducts().then(res => setProducts(res.data));
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-semibold text-center text-indigo-700 mb-8">All Products</h2>
-      <ProductGrid products={staticProducts} />
+      <ProductGrid products={products} />
     </div>
   );
 };

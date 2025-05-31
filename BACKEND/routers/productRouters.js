@@ -8,17 +8,16 @@ import {
   getMyProducts
 } from '../controllers/productController.js';
 import { isAuthenticated } from '../Middleware/authMiddleware.js';
+import upload from '../Middleware/uploadMiddleware.js';
 
 const router = express.Router();
 
-// Public Routes
-router.get('/', getAllProducts);          // GET /api/products
-router.get('/:id', getProductById);      // GET /api/products/:id
+router.get('/', getAllProducts);
+router.get('/:id', getProductById);
 
-// Protected Routes
-router.post('/', isAuthenticated, addProduct);                // POST /api/products
-router.get('/my/products', isAuthenticated, getMyProducts);   // GET /api/products/my/products
-router.put('/:id', isAuthenticated, updateProduct);           // PUT /api/products/:id
-router.delete('/:id', isAuthenticated, deleteProduct);        // DELETE /api/products/:id
+router.post('/', isAuthenticated, upload.single('image'), addProduct);
+router.get('/my/products', isAuthenticated, getMyProducts);
+router.put('/:id', isAuthenticated, updateProduct);
+router.delete('/:id', isAuthenticated, deleteProduct);
 
 export default router;

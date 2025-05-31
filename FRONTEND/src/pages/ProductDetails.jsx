@@ -1,51 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./ProductDetails.css";
-
-const staticProducts = [
-  {
-    id: 1,
-    name: "Smartphone X200",
-    description: "A powerful smartphone with an amazing camera.",
-    price: 799,
-    imageUrl:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    brand: "TechBrand",
-  },
-  {
-    id: 2,
-    name: "Wireless Headphones",
-    description: "High-quality sound with noise cancellation.",
-    price: 199,
-    imageUrl:
-      "https://images.unsplash.com/photo-1512499617640-c2f99912a5a0?auto=format&fit=crop&w=800&q=80",
-    brand: "SoundX",
-  },
-  {
-    id: 3,
-    name: "Gaming Laptop",
-    description: "Ultimate gaming performance with RTX graphics.",
-    price: 1499,
-    imageUrl:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-    brand: "GameTech",
-  },
-  {
-    id: 4,
-    name: "Smartwatch Pro",
-    description: "Track your health and fitness with style.",
-    price: 299,
-    imageUrl:
-      "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=800&q=80",
-    brand: "FitBrand",
-  },
-];
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const product = staticProducts.find((p) => p.id === parseInt(id));
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/products/${id}`)
+      .then((res) => {
+        setProduct(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setProduct(null);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <div className="container mx-auto p-6 text-center">Loading...</div>;
+  }
 
   if (!product) {
     return (
@@ -75,7 +54,7 @@ const ProductDetails = () => {
 
       <div className="product-details-flex mt-6">
         <img
-          src={product.imageUrl}
+          src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
           alt={product.name}
           className="product-image"
         />

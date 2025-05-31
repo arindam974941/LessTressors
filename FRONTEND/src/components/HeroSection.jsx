@@ -22,7 +22,7 @@ const HeroSection = () => {
             Shop Now</button>
           <div className="discount">
             {/* <div className="circle"></div> */}
-            <p class='save'><strong>Save upto 25%</strong><br /> on handbags</p>
+            <p className='save'><strong>Save upto 25%</strong><br /> on handbags</p>
           </div>
         </div>
         <div className="circle"></div>

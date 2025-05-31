@@ -49,9 +49,13 @@
   border-radius: 1.875rem; /* 30px */
   max-width: 26rem; /* 416px */
   width: 100%;
-  object-fit: cover;
+  height: 320px;
+  object-fit: contain;
+  background: #f3f4f6;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-image:hover {

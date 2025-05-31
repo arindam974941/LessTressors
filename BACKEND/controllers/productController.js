@@ -3,9 +3,11 @@ import Product from '../models/Product.model.js';
 // Create product
 export const addProduct = async (req, res) => {
   try {
+    const imageUrl = req.file ? req.file.path : undefined;
     const product = new Product({
       ...req.body,
-      seller: req.user._id
+      images: imageUrl ? [imageUrl] : [],
+      seller: req.user._id,
     });
 
     const saved = await product.save();

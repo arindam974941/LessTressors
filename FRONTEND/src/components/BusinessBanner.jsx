@@ -7,15 +7,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ProductForm from './ProductForm'; // Create this component
 
-const BusinessBanner = ({ openAuthPopup }) => {
-  const [showProductForm, setShowProductForm] = useState(false);
+const BusinessBanner = () => {
   const navigate = useNavigate();
 
   const handleJoinAsSeller = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      // Ask parent to open login/signup popup
-      openAuthPopup('seller');
+       alert('Please login to add a product.');
+      navigate('/'); 
       return;
     }
     // Update user role to B2B
@@ -23,7 +22,7 @@ const BusinessBanner = ({ openAuthPopup }) => {
       await axios.put('http://localhost:5000/api/users/role', { role: 'B2B' }, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setShowProductForm(true);
+       navigate('/add-product');
     } catch (err) {
       alert('Failed to update role');
     }
@@ -38,9 +37,9 @@ const BusinessBanner = ({ openAuthPopup }) => {
       <div className="banner-box">
         <h2>Are You a Business Owner ?</h2>
         <p>Join with us and sell your product on our platform</p>
-        <button className="seller-btn" onClick={handleJoinAsSeller}>Join as Seller</button>
+         <button className="seller-btn" onClick={handleJoinAsSeller}>Add product</button>
       </div>
-      {showProductForm && <ProductForm onClose={() => setShowProductForm(false)} />}
+      
     </section>
   );
 };
