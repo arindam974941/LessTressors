@@ -13,12 +13,17 @@ dotenv.config();
 
 const app = express(); // Initialize the app instance
 
+const allowedOrigins = [
+  'http://localhost:5173', // or your local frontend port
+  'https://lesstressors-frontend.onrender.com'
+];
+
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: 'https://lesstressors.onrender.com', 
-  credentials: true, // Allow cookies to be sent
+  origin: allowedOrigins,
+  credentials: true,
 }));
 
 // Routes
