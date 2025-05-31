@@ -1,5 +1,5 @@
 import React from "react";
-import "./underpriviledged.css";
+import "./UnderPriviledged.css";
 import sapiensImage from "../assets/product-img/sapiens2.png";
 import elephant from "../assets/product-img/elephant.png"; 
 import pot from "../assets/product-img/handmadePot.png";
