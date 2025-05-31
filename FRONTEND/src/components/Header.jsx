@@ -26,7 +26,7 @@ export default function Header() {
    useEffect(() => {
     if (isAuthenticated && postAuthAction === 'seller') {
       // Call backend to update role
-      axios.put('http://localhost:5000/api/users/role', { role: 'B2B' }, {
+      axios.put('https://lesstressors.onrender.com/api/users/role', { role: 'B2B' }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       }).then(() => {
         // Optionally, trigger product form popup here
@@ -50,7 +50,7 @@ export default function Header() {
  
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/logout'); // Call the logout endpoint
+      await axios.post('https://lesstressors.onrender.com/logout'); // Call the logout endpoint
       localStorage.removeItem('token'); // Remove the token from localStorage
       setIsAuthenticated(false); // Update authentication state
       alert('Logout successful');

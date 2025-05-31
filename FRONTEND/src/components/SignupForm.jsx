@@ -26,7 +26,7 @@ function SignupForm({ setShowPopup, setIsLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/signup', formData);
+      const res = await axios.post('https://lesstressors.onrender.com/signup', formData);
       alert(res.data.message); // Show success message
       localStorage.setItem('token', res.data.token); // Save JWT to localStorage
       setShowPopup(false); // Close the popup

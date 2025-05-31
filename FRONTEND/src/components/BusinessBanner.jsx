@@ -19,7 +19,7 @@ const BusinessBanner = () => {
     }
     // Update user role to B2B
     try {
-      await axios.put('http://localhost:5000/api/users/role', { role: 'B2B' }, {
+      await axios.put('https://lesstressors.onrender.com/api/users/role', { role: 'B2B' }, {
         headers: { Authorization: `Bearer ${token}` }
       });
        navigate('/add-product');

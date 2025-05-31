@@ -11,7 +11,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${id}`)
+      .get(`https://lesstressors.onrender.com/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setLoading(false);

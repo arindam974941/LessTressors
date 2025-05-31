@@ -33,7 +33,7 @@ const ProductForm = () => {
       Object.entries(form).forEach(([key, value]) => data.append(key, value));
       if (imageFile) data.append('image', imageFile);
 
-      await axios.post('http://localhost:5000/products', data, {
+      await axios.post('https://lesstressors.onrender.com/products', data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',
