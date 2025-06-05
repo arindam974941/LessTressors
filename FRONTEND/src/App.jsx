@@ -3,8 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
-  createBrowserRouter,
-  RouterProvider,
+  createBrowserRouter
 } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -30,38 +29,12 @@ import SellerLogin from './pages/SellerLogin';
 import CartPage from './pages/CartPage';
 
 function App() {
-  const router = createBrowserRouter([
-    { 
-      path: "/", 
-      element: (
-        <>
-        <Header/>
-        <Homepage/>
-        <Footer/>
-        </>
-      )
-    },
-    {
-      path: "/products", 
-      element: (
-        <>
-        <Header />
-        <ProductsPage />
-        <Footer />
-        </>
-      ) },    
-    {path: "/add-product", element: <ProductForm /> },
-    {path: "/underpriviledged", element: <UnderPriviledged /> },
-    {path: "/product/:id", element: <ProductDetails /> },
-    {path: "/seller", element: <SellerHome /> },
-    {path: "/seller/products", element: <SellerProducts /> },
-  ]);
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
     <div className="App">
-      {/* <Router>
+      <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -77,9 +50,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer />
-      </Router> */}
-      <RouterProvider router={router} />
-      
+      </Router>
     </div>
   );
 }
