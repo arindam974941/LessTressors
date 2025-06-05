@@ -3,6 +3,8 @@ import {
   Routes,
   Route,
   Navigate,
+  createBrowserRouter,
+  RouterProvider,
 } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -28,19 +30,45 @@ import SellerLogin from './pages/SellerLogin';
 import CartPage from './pages/CartPage';
 
 function App() {
+  const router = createBrowserRouter([
+    { 
+      path: "/", 
+      element: (
+        <>
+        <Header/>
+        <Homepage/>
+        <Footer/>
+        </>
+      )
+    },
+    {
+      path: "/products", 
+      element: (
+        <>
+        <Header />
+        <ProductsPage />
+        <Footer />
+        </>
+      ) },    
+    {path: "/add-product", element: <ProductForm /> },
+    {path: "/underpriviledged", element: <UnderPriviledged /> },
+    {path: "/product/:id", element: <ProductDetails /> },
+    {path: "/seller", element: <SellerHome /> },
+    {path: "/seller/products", element: <SellerProducts /> },
+  ]);
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
 
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/add-product" element={<ProductForm />} />
-          <Route path="/underPriviledged" element={<UnderPriviledged />} />
+          <Route path="/underpriviledged" element={<UnderPriviledged />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/seller" element={<SellerHome />} />
           <Route path="/seller/products" element={<SellerProducts />} />
@@ -49,7 +77,9 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer />
-      </Router>
+      </Router> */}
+      <RouterProvider router={router} />
+      
     </div>
   );
 }
