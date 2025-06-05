@@ -1,0 +1,16 @@
+.seller-navbar {
+  display: flex;
+  gap: 2rem;
+  background: #f7e44c;
+  padding: 1rem 2rem;
+  border-radius: 0 0 20px 20px;
+  font-weight: 600;
+}
+.seller-navbar a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.seller-navbar a:hover {
+  color: #a77ce7;
+}

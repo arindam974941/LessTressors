@@ -6,6 +6,7 @@ import authRoutes from './routers/authRoutes.js';
 import productRoutes from './routers/productRouters.js';
 import wishlistRoutes from './routers/wishlistRoutes.js';
 import cartRoutes from './routers/cartRoutes.js';
+import sellerAuthRoutes from './routers/sellerAuthRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
@@ -26,6 +27,9 @@ app.use(cors({
   credentials: true,
 }));
 
+
+// Seller Authentication routes
+app.use('/seller', sellerAuthRoutes);
 // Routes
 const PORT = process.env.PORT || 5000;
 app.use('/api/users', userRoutes);

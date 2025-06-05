@@ -7,11 +7,11 @@ const variantSchema = new mongoose.Schema({
 });
 
 const productSchema = new mongoose.Schema({
-  seller: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
+ seller: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Seller',
+  required: true
+},
   name: { type: String, required: true },
   brand: String,
   category: { type: String, required: true },

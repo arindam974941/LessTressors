@@ -21,6 +21,11 @@ import Homepage from "./pages/Homepage";
 import UnderPriviledged from "./pages/UnderPriviledged";
 import ProductDetails from "./pages/ProductDetails";
 import ProductForm from "./components/ProductForm";
+import SellerHome from './pages/SellerHome';
+import SellerProducts from './pages/SellerProducts';
+import SellerSignup from './pages/SellerSignup';
+import SellerLogin from './pages/SellerLogin';
+import CartPage from './pages/CartPage';
 
 function App() {
   useEffect(() => {
@@ -37,6 +42,11 @@ function App() {
           <Route path="/add-product" element={<ProductForm />} />
           <Route path="/underPriviledged" element={<UnderPriviledged />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/seller" element={<SellerHome />} />
+          <Route path="/seller/products" element={<SellerProducts />} />
+           <Route path="/seller/signup" element={<SellerSignup />} />
+          <Route path="/seller/login" element={<SellerLogin />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Footer />
       </Router>

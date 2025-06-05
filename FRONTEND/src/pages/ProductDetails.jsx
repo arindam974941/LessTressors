@@ -22,6 +22,19 @@ const ProductDetails = () => {
       });
   }, [id]);
 
+  const handleAddToCart = async () => {
+    try {
+      await axios.post(
+        "https://lesstressors.onrender.com/cart",
+        { productId: product._id, quantity: 1 },
+        { withCredentials: true }
+      );
+      alert("Product added to cart!");
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to add to cart");
+    }
+  };
+
   if (loading) {
     return <div className="container mx-auto p-6 text-center">Loading...</div>;
   }
@@ -63,7 +76,11 @@ const ProductDetails = () => {
           <p className="product-price">₹{product.price}</p>
           <p className="product-description">{product.description}</p>
           <p className="product-brand">Brand: {product.brand}</p>
-          <button className="add-to-cart-btn" aria-label="Add product to cart">
+          <button
+            className="add-to-cart-btn"
+            aria-label="Add product to cart"
+            onClick={handleAddToCart}
+          >
             Add to Cart
           </button>
         </div>
