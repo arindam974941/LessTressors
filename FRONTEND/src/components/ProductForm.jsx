@@ -35,7 +35,7 @@ const ProductForm = () => {
 
       await axios.post('https://lesstressors.onrender.com/products', data, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          // Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',
         },
       });
