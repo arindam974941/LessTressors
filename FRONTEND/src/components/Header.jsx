@@ -4,7 +4,7 @@ import logo from '../assets/Lestresor_logo.png';
 import LoginForm from './LoginForm.jsx';
 import SignupForm from './SignupForm.jsx';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import BusinessBanner from './BusinessBanner.jsx'; 
 
 export default function Header() {
@@ -70,6 +70,7 @@ export default function Header() {
             <a href="/products">products</a>
             <a href="/about">About</a>
             <a href="/underpriviledged">Under priviledged</a>
+            <Link to="/cart">My Cart</Link>
           </nav>
           {!isAuthenticated ? (
             <button

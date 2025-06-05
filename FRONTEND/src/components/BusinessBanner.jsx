@@ -10,23 +10,10 @@ import ProductForm from './ProductForm'; // Create this component
 const BusinessBanner = () => {
   const navigate = useNavigate();
 
-  const handleJoinAsSeller = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-       alert('Please login to add a product.');
-      navigate('/'); 
-      return;
-    }
-    // Update user role to B2B
-    try {
-      await axios.put('https://lesstressors.onrender.com/api/users/role', { role: 'B2B' }, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-       navigate('/add-product');
-    } catch (err) {
-      alert('Failed to update role');
-    }
-  };
+  const handleJoinAsSeller = () => {
+  
+  navigate('/seller');
+};
 
   return (
     <section className="business-banner" data-aos="fade">
@@ -37,7 +24,7 @@ const BusinessBanner = () => {
       <div className="banner-box">
         <h2>Are You a Business Owner ?</h2>
         <p>Join with us and sell your product on our platform</p>
-         <button className="seller-btn" onClick={handleJoinAsSeller}>Add product</button>
+         <button className="seller-btn" onClick={handleJoinAsSeller}>Join As Seller</button>
       </div>
       
     </section>
